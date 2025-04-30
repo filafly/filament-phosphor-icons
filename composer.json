@@ -1,0 +1,47 @@
+{
+  "name": "filafly/filament-phosphor-icons",
+  "description": "Phosphor icon pack for Filament Icon Swap",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "Laravel",
+    "Filament",
+    "icons",
+    "Font Awesome",
+    "replace",
+    "swap"
+  ],
+  "homepage": "https://filafly.com/packages/filament-icons",
+  "authors": [
+    {
+      "role": "Developer",
+      "name": "Nolan Nordlund",
+      "email": "nolan@filafly.com",
+      "homepage": "https://www.filafly.com/"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "filafly/filament-icons": "*",
+    "codeat3/blade-phosphor-icons": "^2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Filafly\\FilamentPhosphorIcons\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": {
+    "filafly": {
+      "type": "path",
+      "url": "../filament-icons",
+      "options": {
+        "symlink": true
+      }
+    }
+  },
+  "require-dev": {
+    "laravel/pint": "^1.22"
+  }
+}
