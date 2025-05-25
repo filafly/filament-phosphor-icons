@@ -17,7 +17,7 @@ composer require filafly/filament-phosphor-icons
 After the package is installed, you must register the plugin in your Filament Panel provider:
 
 ```php
-use Filafly\FilamentPhosphorIcons\PhosphorIcons;
+use Filafly\Icons\PhosphorIcons;
 
 public function panel(Panel $panel): Panel
 {
