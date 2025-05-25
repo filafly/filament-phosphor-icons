@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Filafly\\Icons\\": "src/"
+      "Filafly\\Icons\\Phosphor\\": "src/"
     }
   },
   "minimum-stability": "stable",

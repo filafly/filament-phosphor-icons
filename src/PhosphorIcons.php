@@ -1,6 +1,8 @@
 <?php
 
-namespace Filafly\Icons;
+namespace Filafly\Icons\Phosphor;
+
+use Filafly\Icons\IconSet;
 
 class PhosphorIcons extends IconSet
 {
