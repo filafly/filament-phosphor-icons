@@ -21,16 +21,17 @@
     }
   ],
   "require": {
-    "php": "^8.0",
-    "filafly/filament-icons": "^1.0",
-    "codeat3/blade-phosphor-icons": "^2.3"
+    "php": "^8.2",
+    "filafly/filament-icons": "^2.0",
+    "codeat3/blade-phosphor-icons": "^2.3",
+    "filament/filament": "^4.0"
   },
   "autoload": {
     "psr-4": {
       "Filafly\\Icons\\Phosphor\\": "src/"
     }
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "beta",
   "prefer-stable": true,
   "require-dev": {
     "laravel/pint": "^1.22"
