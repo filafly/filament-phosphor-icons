@@ -22,7 +22,7 @@
   ],
   "require": {
     "php": "^8.2",
-    "filafly/filament-icons": "2.x-dev",
+    "filafly/filament-icons": "^2.0",
     "codeat3/blade-phosphor-icons": "^2.3",
     "filament/filament": "^4.0"
   },
@@ -31,18 +31,9 @@
       "Filafly\\Icons\\Phosphor\\": "src/"
     }
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "beta",
   "prefer-stable": true,
   "require-dev": {
     "laravel/pint": "^1.22"
-  },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "../filament-icons",
-      "options": {
-        "symlink": true
-      }
-    }
-  ]
+  }
 }
