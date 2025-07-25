@@ -62,34 +62,38 @@ PhosphorIcons::make()->duotone();
 ```
 
 ## Override Specific Icons
-If you need to override certain icons to use a different style, you can use either icon aliases or direct icon names.
+If you need to override certain icons to use different icons or styles, you can use the new enum-driven override methods.
 
 ### Using Icon Aliases
-Use the `overrideStyleForAlias` method with a [Filament Icon Alias](https://filamentphp.com/docs/3.x/support/icons#available-icon-aliases). This method works with either a single icon key (string) or multiple icon keys (array).
+Use the `overrideAlias` method with a [Filament Icon Alias](https://filamentphp.com/docs/3.x/support/icons#available-icon-aliases) and a specific Phosphor enum case.
 
 ```php
-// Override a single icon key
-PhosphorIcons::make()->overrideStyleForAlias('tables::actions.filter', 'thin');
+use Filafly\Icons\Phosphor\Enums\Phosphor;
 
-// Override multiple icon keys at once
-PhosphorIcons::make()->overrideStyleForAlias([
-    'tables::actions.filter',
-    'actions::delete-action',
-], 'thin');
+// Override a single icon alias to use a specific icon style
+PhosphorIcons::make()->overrideAlias('tables::actions.filter', Phosphor::FunnelBold);
+
+// Override multiple aliases at once
+PhosphorIcons::make()->overrideAliases([
+    'tables::actions.filter' => Phosphor::FunnelThin,
+    'actions::delete-action' => Phosphor::TrashBold,
+]);
 ```
 
-### Using Icon Names
-Use the `overrideStyleForIcon` method with the actual Phosphor icon name. Like the alias method, this works with either a single icon name or multiple names.
+### Using Icon Enum Cases
+Use the `overrideIcon` method to replace one Phosphor icon with another across all usages.
 
 ```php
-// Override a single icon
-PhosphorIcons::make()->overrideStyleForIcon('phosphor-user', 'thin');
+use Filafly\Icons\Phosphor\Enums\Phosphor;
+
+// Replace all instances of one icon with another
+PhosphorIcons::make()->overrideIcon(Phosphor::User, Phosphor::UserBold);
 
 // Override multiple icons at once
-PhosphorIcons::make()->overrideStyleForIcon([
-    'phosphor-user',
-    'phosphor-caret-up',
-], 'thin');
+PhosphorIcons::make()->overrideIcons([
+    Phosphor::User => Phosphor::UserCircle,
+    Phosphor::CaretUp => Phosphor::CaretUpBold,
+]);
 ```
 
 ## License
