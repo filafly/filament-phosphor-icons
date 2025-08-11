@@ -31,7 +31,7 @@
       "Filafly\\Icons\\Phosphor\\": "src/"
     }
   },
-  "minimum-stability": "beta",
+  "minimum-stability": "stable",
   "prefer-stable": true,
   "require-dev": {
     "laravel/pint": "^1.22"
