@@ -1,5 +1,5 @@
 <p class="filament-hidden" align="center">
-    <img src="https://filafly.com/images/filafly-filament-phosphor-icons.jpg" alt="Banner" style="width: 100%; max-width: 800px;" />
+    <img src="https://filafly.com/images/filafly-filament-phosphor-icons.png" alt="Banner" style="width: 100%; max-width: 800px;" />
 </p>
 
 # Filament Phosphor Icons
