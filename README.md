@@ -1,10 +1,10 @@
 <p class="filament-hidden" align="center">
-    <img src="images/filafly-filament-phosphor-icons.png" alt="Banner" style="width: 100%; max-width: 800px;" />
+    <img src="https://filafly.com/images/filafly-filament-phosphor-icons.jpg" alt="Banner" style="width: 100%; max-width: 800px;" />
 </p>
 
 # Filament Phosphor Icons
 
-A Phosphor icon set implementation for Filament 3.x, providing a comprehensive set of Phosphor icons that seamlessly integrate with Filament's interface.
+An Phosphor icon set implementation for [Filament Icons](https://github.com/filafly/filament-icons), allowing for instant replacement of all icons used within the Filament framework.
 
 ## Installation
 
@@ -22,13 +22,11 @@ use Filafly\Icons\Phosphor\PhosphorIcons;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->plugins([
-            PhosphorIcons::make(),
-        ]);
+        ->plugin(PhosphorIcons::make());
 }
 ```
 
-## Icon Styles
+## Setting the global icon style
 
 Phosphor icons come in multiple styles that you can switch between. Available styles include:
 
@@ -42,58 +40,128 @@ Phosphor icons come in multiple styles that you can switch between. Available st
 You can change the style using the following methods:
 
 ```php
-// Set to thin style
 PhosphorIcons::make()->thin();
-
-// Set to light style
 PhosphorIcons::make()->light();
-
-// Set to regular style (default)
 PhosphorIcons::make()->regular();
-
-// Set to bold style
 PhosphorIcons::make()->bold();
-
-// Set to fill style
 PhosphorIcons::make()->fill();
-
-// Set to duotone style
 PhosphorIcons::make()->duotone();
 ```
 
-## Override Specific Icons
-If you need to override certain icons to use different icons or styles, you can use the new enum-driven override methods.
+## Setting style for a subset of icons
 
-### Using Icon Aliases
-Use the `overrideAlias` method with a [Filament Icon Alias](https://filamentphp.com/docs/3.x/support/icons#available-icon-aliases) and a specific Phosphor enum case.
+If you need to override certain icons to use a different style, you can use either icon aliases or icon enum cases.
+
+### Using icon aliases
+Use the `overrideStyleForAlias` method with a [Filament Icon Alias](https://filamentphp.com/docs/4.x/styling/icons#available-icon-aliases). This method works with either a single icon key (string) or multiple icon keys (array).
 
 ```php
-use Filafly\Icons\Phosphor\Enums\Phosphor;
+use Filafly\Icons\Phosphor\PhosphorIcons;
+use Filafly\Icons\Phosphor\Enums\PhosphorStyle;
+use Filament\Tables\View\TablesIconAlias;
+use Filament\Actions\View\ActionsIconAlias;
 
-// Override a single icon alias to use a specific icon style
-PhosphorIcons::make()->overrideAlias('tables::actions.filter', Phosphor::FunnelBold);
+// Override a single icon key
+PhosphorIcons::make()->overrideStyleForAlias(TablesIconAlias::ACTIONS_FILTER, PhosphorStyle::Solid);
 
-// Override multiple aliases at once
-PhosphorIcons::make()->overrideAliases([
-    'tables::actions.filter' => Phosphor::FunnelThin,
-    'actions::delete-action' => Phosphor::TrashBold,
-]);
+// Override multiple icon keys at once
+PhosphorIcons::make()->overrideStyleForAlias([
+    TablesIconAlias::ACTIONS_FILTER,
+    ActionsIconAlias::DELETE_ACTION,
+], PhosphorStyle::Solid);
 ```
 
-### Using Icon Enum Cases
-Use the `overrideIcon` method to replace one Phosphor icon with another across all usages.
+### Using icon enum cases
+Use the `overrideStyleForIcon` method with Phosphor enum case(s). Like the alias method, this works with either a single case or an array of cases.
 
 ```php
+use Filafly\Icons\Phosphor\PhosphorIcons;
 use Filafly\Icons\Phosphor\Enums\Phosphor;
+use Filafly\Icons\Phosphor\Enums\PhosphorStyle;
 
-// Replace all instances of one icon with another
-PhosphorIcons::make()->overrideIcon(Phosphor::User, Phosphor::UserBold);
+// Override a single icon
+PhosphorIcons::make()->overrideStyleForIcon(Phosphor::User, PhosphorStyle::Solid);
 
 // Override multiple icons at once
-PhosphorIcons::make()->overrideIcons([
-    Phosphor::User => Phosphor::UserCircle,
-    Phosphor::CaretUp => Phosphor::CaretUpBold,
-]);
+PhosphorIcons::make()->overrideStyleForIcon([
+    Phosphor::MagnifyingGlass,
+    Phosphor::Funnel,
+], PhosphorStyle::Solid);
+```
+
+## Specifying exact icons to use
+
+You can also specify exactly which icon you would like to use in given situations. This can be done via icon aliases or icon enum cases.
+
+### Override icon aliases
+
+Use `overrideAlias()` to change which icon is used for specific Filament icon aliases:
+
+```php
+use Filafly\Icons\Phosphor\PhosphorIcons;
+use Filafly\Icons\Phosphor\Enums\Phosphor;
+use Filament\View\PanelsIconAlias;
+use Filament\Tables\View\TablesIconAlias;
+
+PhosphorIcons::make()
+    ->overrideAlias(PanelsIconAlias::SIDEBAR_EXPAND_BUTTON, Phosphor::CaretRight)
+    ->overrideAlias(TablesIconAlias::ACTIONS_FILTER, Phosphor::Funnel);
+```
+
+Or use `overrideAliases()` to override multiple aliases at once by passing an array:
+
+```php
+use Filafly\Icons\Phosphor\PhosphorIcons;
+use Filafly\Icons\Phosphor\Enums\Phosphor;
+use Filament\View\PanelsIconAlias;
+use Filament\Tables\View\TablesIconAlias;
+
+PhosphorIcons::make()
+    ->overrideAliases([
+        PanelsIconAlias::SIDEBAR_EXPAND_BUTTON => Phosphor::CaretRight,
+        TablesIconAlias::ACTIONS_FILTER => Phosphor::Funnel,
+    ]);
+```
+
+### Override individual icons
+
+Use `overrideIcon()` to replace specific Phosphor icons with different ones:
+
+```php
+use Filafly\Icons\Phosphor\PhosphorIcons;
+use Filafly\Icons\Phosphor\Enums\Phosphor;
+
+PhosphorIcons::make()
+    ->overrideIcon(Phosphor::MagnifyingGlass, Phosphor::MagnifyingGlassThin)
+    ->overrideIcon(Phosphor::Plus, Phosphor::PlusCircle);
+```
+
+Or use `overrideIcons()` to override multiple icons at once by passing an array:
+
+```php
+use Filafly\Icons\Phosphor\PhosphorIcons;
+use Filafly\Icons\Phosphor\Enums\Phosphor;
+
+PhosphorIcons::make()
+    ->overrideIcons([
+        Phosphor::MagnifyingGlass->value => Phosphor::MagnifyingGlassThin,
+        Phosphor::Plus->value => Phosphor::PlusCircle,
+        Phosphor::Edit->value => Phosphor::EditPencil,
+    ]);
+```
+> PHP arrays do not support enums as keys so `->value` is necessary if you want to reference the enum
+
+These methods are useful for fine-tuning the icon set to better fit your application's needs.
+
+## Icon enum
+All icons are available through an enum providing convenient usage throughout Filament. For more information, check the [Filament docs](https://filamentphp.com/docs/4.x/styling/icons).
+
+```php
+use Filament\Forms\Components\Toggle;
+use Filafly\Icons\Phosphor\Enums\Phosphor;
+
+Toggle::make('is_starred')
+    ->onIcon(Phosphor::Star)
 ```
 
 ## License
