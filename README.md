@@ -53,7 +53,7 @@ PhosphorIcons::make()->duotone();
 If you need to override certain icons to use a different style, you can use either icon aliases or icon enum cases.
 
 ### Using icon aliases
-Use the `overrideStyleForAlias` method with a [Filament Icon Alias](https://filamentphp.com/docs/4.x/styling/icons#available-icon-aliases). This method works with either a single icon key (string) or multiple icon keys (array).
+Use the `overrideStyleForAlias` method with a [Filament Icon Alias](https://filamentphp.com/docs/styling/icons#available-icon-aliases). This method works with either a single icon key (string) or multiple icon keys (array).
 
 ```php
 use Filafly\Icons\Phosphor\PhosphorIcons;
@@ -154,7 +154,7 @@ PhosphorIcons::make()
 These methods are useful for fine-tuning the icon set to better fit your application's needs.
 
 ## Icon enum
-All icons are available through an enum providing convenient usage throughout Filament. For more information, check the [Filament docs](https://filamentphp.com/docs/4.x/styling/icons).
+All icons are available through an enum providing convenient usage throughout Filament. For more information, check the [Filament docs](https://filamentphp.com/docs/styling/icons).
 
 ```php
 use Filament\Forms\Components\Toggle;
