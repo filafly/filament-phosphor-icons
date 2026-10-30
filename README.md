@@ -164,5 +164,9 @@ Toggle::make('is_starred')
     ->onIcon(Phosphor::Star)
 ```
 
+## From FilaFly
+
+FilaFly also makes premium themes for Filament panels: Lucent, Prizm, Cypher and Citrus. [Browse the themes](https://filafly.com/themes?utm_source=github&utm_medium=readme&utm_campaign=phosphor-icons).
+
 ## License
 The MIT License (MIT). Please see [License](LICENSE.md) for more information.
